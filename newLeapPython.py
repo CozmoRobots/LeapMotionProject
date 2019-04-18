@@ -47,7 +47,7 @@ class LeapMotion:
                 position = hand.palm_position
                 x_basis = position.x
                 z_basis = position.z
-                y_basis = postion.y
+                y_basis = position.y
                 yaw = hand.direction.yaw
                 pitch = hand.direction.pitch
                 roll = hand.direction.roll
@@ -69,10 +69,10 @@ class LeapMotion:
                 else:
                     self.robot.drive_wheels(0,0)
 
-                if pitch >= 20 and pitch <= 80:
+                if pitch >= .5:
                     print("Robot is raising his lift")
                     self.robot.move_lift(2)
-                elif pitch >=280 and pitch <= 340 :
+                elif pitch <= -.1:
                     print("Robot is lowering his lift")
                     self.robot.move_lift(-2)
                 else:
