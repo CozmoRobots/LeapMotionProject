@@ -52,6 +52,7 @@ class LeapMotion:
                 roll = hand.direction.roll
 
 
+
                 if x_basis >= 50:
                     print("robot right")
                     self.robot.drive_wheels(50, -50)
@@ -67,20 +68,22 @@ class LeapMotion:
                 else:
                     self.robot.drive_wheels(0,0)
 
-                if pitch<=40 and pitch>=0:
+                if pitch<=80 and pitch>=40:
                     print("Robot is raising his lift")
-                    self.robot.move_lift(5)
-                elif pitch >= 320 or pitch <=360:
+                    self.robot.move_lift(2)
+                elif pitch >= 280 or pitch <=320:
                     print("Robot is lowering his lift")
-                    self.robot.move_lift(-5)
+                    self.robot.move_lift(-2)
                 else:
                     self.robot.move_lift(0)
-                if roll >=0 or <= 40:
+
+
+                if position > 150:
                     print("Robot raise head")
-                    self.robot.move_head(5)
-                elif roll <=360 or roll >= 320:
+                    self.robot.move_head(1)
+                elif position <110:
                     print("Robot lower head")
-                    self.robot.move_head(-5)
+                    self.robot.move_head(-1)
                 else:
                     self.robot.move_head(0)
 
