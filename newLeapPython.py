@@ -29,6 +29,11 @@ class LeapMotion:
 
         def on_frame(self, controller):
             frame = controller.frame()
+            if frame.hands.is_empty::
+                    self.robot.drive_wheels(0,0)
+                    self.robot.move_lift(0)
+                    self.robot.move_head(0)
+
             for hand in frame.hands:
 
                 handType = "Left hand" if hand.is_left else "Right hand"
@@ -42,6 +47,9 @@ class LeapMotion:
                 position = hand.palm_position
                 x_basis = position.x
                 z_basis = position.z
+                yaw = hand.direction.yaw
+                pitch = hand.direction.pitch
+                roll = hand.direction.roll
 
 
                 if x_basis >= 50:
@@ -58,6 +66,24 @@ class LeapMotion:
                     self.robot.drive_wheels(50,50)
                 else:
                     self.robot.drive_wheels(0,0)
+
+                if pitch<=40 and pitch>=0:
+                    print("Robot is raising his lift")
+                    self.robot.move_lift(5)
+                elif pitch >= 320 or pitch <=360:
+                    print("Robot is lowering his lift")
+                    self.robot.move_lift(-5)
+                else:
+                    self.robot.move_lift(0)
+                if roll >=0 or <= 40:
+                    print("Robot raise head")
+                    self.robot.move_head(5)
+                elif roll <=360 or roll >= 320:
+                    print("Robot lower head")
+                    self.robot.move_head(-5)
+                else:
+                    self.robot.move_head(0)
+
 
     def main(self):
 
