@@ -72,11 +72,22 @@ class LeapMotion:
                 if pitch >= .5:
                     print("Robot is raising his lift")
                     self.robot.move_lift(2)
+                    self.robot.move_head(0)
+
                 elif pitch <= -.1:
                     print("Robot is lowering his lift")
                     self.robot.move_lift(-2)
+                    self.robot.move_head(0)
                 else:
                     self.robot.move_lift(0)
+                    if y_basis > 150:
+                        print("Robot raise head")
+                        self.robot.move_head(1)
+                    elif y_basis < 120:
+                        print("Robot lower head")
+                        self.robot.move_head(-1)
+                    else:
+                        self.robot.move_head(0)
 
 
                 if y_basis > 150:
