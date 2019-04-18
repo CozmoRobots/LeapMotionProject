@@ -29,7 +29,7 @@ class LeapMotion:
 
         def on_frame(self, controller):
             frame = controller.frame()
-            if frame.hands.is_empty::
+            if frame.hands.is_empty:
                     self.robot.drive_wheels(0,0)
                     self.robot.move_lift(0)
                     self.robot.move_head(0)
