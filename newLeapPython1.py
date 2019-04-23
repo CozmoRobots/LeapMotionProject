@@ -76,10 +76,10 @@ class LeapMotion:
 
 
 
-                if y_basis > 190:
+                if y_basis > 250:
                     print("Robot raise head")
                     self.robot.move_head(1)
-                elif y_basis < 140:
+                elif y_basis < 190:
                     print("Robot lower head")
                     self.robot.move_head(-1)
                 else:
