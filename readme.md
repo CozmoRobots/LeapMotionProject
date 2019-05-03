@@ -1,5 +1,9 @@
 # LeapMotionProject
 
+If you do not have Ubuntu-
+
+On Windows- Install ubuntu in a Virtual Box and enable USB 2.0 Passthrough
+
 Steps to get this project to work on Ubuntu 16
 
 1. Download https://github.com/BlackLight/leap-sdk-python3
